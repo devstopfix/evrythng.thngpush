@@ -1,0 +1,27 @@
+# THNG-Push
+
+Unofficial Elixir pub/sub client for https://evrythng.com/[EVRYTHNG.com].
+
+An experiment in combining the https://evrythng.com/connected-devices-real-time-push-web-things/[real-time push web of things] with a http://nerves-project.org/[12 MB binary] running on the BEAM VM.
+
+
+## Installation
+
+If [available in Hex](https://hex.pm/docs/publish), the package can be installed
+by adding `thngpush` to your list of dependencies in `mix.exs`:
+
+```elixir
+def deps do
+  [{:thngpush, "~> 0.17.0"}]
+end
+```
+
+Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
+and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
+be found at [https://hexdocs.pm/thngpush](https://hexdocs.pm/thngpush).
+
+# License
+
+Copyright © 2017 Devstopfix
+
+Distributed under the Apache License either version 2.0. Not officially supported by https://evrythng.com/[EVRYTHNG.com].
