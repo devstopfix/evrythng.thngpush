@@ -5,16 +5,17 @@ Unofficial Elixir pub/sub client for https://evrythng.com/[EVRYTHNG.com].
 An experiment in combining the https://evrythng.com/connected-devices-real-time-push-web-things/[real-time push web of things] with a http://nerves-project.org/[12 MB binary] running on the BEAM VM.
 
 
-## Installation
+# Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
+If https://hex.pm/docs/publish[available in Hex], the package can be installed
 by adding `thngpush` to your list of dependencies in `mix.exs`:
 
-```elixir
+[source,elixir]
+----
 def deps do
   [{:thngpush, "~> 0.17.0"}]
 end
-```
+----
 
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
