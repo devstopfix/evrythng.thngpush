@@ -1,0 +1,61 @@
+= Evrythng
+
+This document describes how to setup your https://evrythng.com/[EVRYTHNG.com] account as an MQTT server.
+
+== Register
+
+Register and get an operator key:
+
+1. https://dashboard.evrythng.com/signup[Create an account]
+2. login
+3. Copy your *Operator Key* from the _account settings_ menu under your name in the upper right corner
+
+You should rarely use your operator key and never commit it or share it. Regenerate it if you lose control over it! All the following code is intended to be used with an application key and never your operator key.
+
+== Create a project
+
+We will create a project to hold our data. This option can be found at the top of the sidebar. Once created copy the ID of the project.
+
+== Create an application within the project
+
+We will create an Elixir application that interacts with our server. Fire up a REPL with `iex -S mix` and:
+
+`POST /projects/Uk6haTcreg8b9pwwaEHVehhn/applications/`
+
+[source,elixir]
+----
+{
+  "name":"Elixir",
+  "description":"Elixir MQTT client",
+  "defaultUrl":"http://elixir-lang.org/",
+  "socialNetworks": {},
+  "tags":["Elixir","MQTT"]
+}
+----
+
+== Create a Thng in your project
+
+We will model our sensors as Thngs with a property temperature. Create a Thng:
+
+`POST /thngs?project=U2MYadR3Bg8wQ5wawg2SFnMn`
+
+[source,elixir]
+----
+{
+  "name": "Sensor 1",
+  "description": "Thermal Sensor",
+  "properties": {
+  	"temperature": 0.0
+  },
+  "tags": ["Sensor"]
+}
+----
+
+Retrieve the ID of your sensor:
+
+----
+{
+  "id": "UkqYaVKmVDsRQpaawEHWChWf",
+}
+----
+
