@@ -29,6 +29,9 @@ defmodule Evrythng.ThngPush.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    []
+    [{:emqttc, path: "../emqttc"},
+     {:credo, "~> 0.5", only: [:dev, :test]},
+     {:excheck, "~> 0.5.3", only: :test},
+     {:triq, github: "triqng/triq", only: :test}]
   end
 end
