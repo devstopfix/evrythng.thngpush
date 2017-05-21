@@ -17,6 +17,19 @@ def deps do
 end
 ----
 
+## Build
+
+Build requires [emqtcc](git@github.com:emqtt/emqttc.git) to be available in a sibling folder. 
+
+[source,bash]
+----
+cd ..
+git clone https://github.com/emqtt/emqttc.git
+cd emqttc
+make
+----
+
+
 = REPL
 
 Connect and disconnect using a key read from ENV:
