@@ -3,7 +3,7 @@ defmodule Evrythng.ThngPush.Mixfile do
 
   def project do
     [app: :thngpush,
-     version: "0.17.137",
+     version: "0.17.138",
      elixir: "~> 1.4",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,

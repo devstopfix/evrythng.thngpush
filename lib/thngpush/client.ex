@@ -17,15 +17,18 @@ defmodule Evrythng.ThngPush.Client do
   end
 
   def terminate(_reason, mqttc_pid) do
+    # TODO move to supervisor
     :emqttc.disconnect(mqttc_pid)
   end
 
-  def handle_info({:publish, Topic, Payload}, _mqttc_pid) do
+  def handle_info({:publish, Topic, Payload}, state) do
       :io.format("Message Received from ~s: ~p~n", [Topic, Payload]) |> IO.puts
+    {:noreply, state}
   end
 
-  def handle_info({:mqttc, _pid, :connected}) do
-    IO.puts("Connected");
+  def handle_info({:mqttc, pid, :connected}, state) do
+    IO.puts("Connected " <> inspect(pid));
+    {:noreply, state}
   end
 
   @doc """
