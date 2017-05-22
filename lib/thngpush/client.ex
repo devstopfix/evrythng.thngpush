@@ -2,6 +2,13 @@ defmodule Evrythng.ThngPush.Client do
 
   use GenServer
 
+  defmacro __using__(_opts) do
+    IO.puts "You are USING Evrythng.ThngPush.Client"
+    quote do          # <--
+      import Evrythng.ThngPush.Client     # <--
+    end               # <--
+  end  
+
   def start_link(api_key) do
     GenServer.start_link(__MODULE__, api_key)
   end  
