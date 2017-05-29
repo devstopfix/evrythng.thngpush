@@ -3,7 +3,7 @@ defmodule Evrythng.ThngPush.Mixfile do
 
   def project do
     [app: :thngpush,
-     version: "0.17.139",
+     version: "0.17.140",
      elixir: "~> 1.4",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
@@ -19,17 +19,9 @@ defmodule Evrythng.ThngPush.Mixfile do
      mod: {Evrythng.ThngPush.Application, []}]
   end
 
-  # Dependencies can be Hex packages:
-  #
-  #   {:my_dep, "~> 0.3.0"}
-  #
-  # Or git/path repositories:
-  #
-  #   {:my_dep, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
-  #
-  # Type "mix help deps" for more examples and options
   defp deps do
     [{:emqttc, path: "../emqttc"},
+     {:poison, "~> 3.0"},
      {:credo, "~> 0.5", only: [:dev, :test]},
      {:excheck, "~> 0.5.3", only: :test},
      {:triq, github: "triqng/triq", only: :test}]

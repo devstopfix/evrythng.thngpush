@@ -43,10 +43,24 @@ export EVT_THNG_KEY=N8KAYvBiYXhDL...a8OvPCDnEhAizu7z7
 ----
 alias Evrythng.ThngPush.Client, as: Client
 key = System.get_env("EVT_THNG_KEY")
-{:ok, pid} = Client.start_link(key)
-Client.subscribe(pid, "/thngs/U3cy9ayKBXswtpwawYceAk8a/properties")
+{:ok, pid} = Client.start_link(key, self())
+Client.subscribe(pid, "/thngs/UmyxDwBxBDswQ5aaaYykthDm/properties")
+
 GenServer.stop(pid)
 ----
+
+Receive in `iex`:
+
+[source, elixir]
+----
+receive do
+  {_, {:thngs, _, _, values}}  -> values
+after
+  10_000 -> "nothing after 10s"
+end
+----
+
+
 
 
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
