@@ -19,7 +19,7 @@ end
 
 ## Build
 
-Build requires [emqtcc](git@github.com:emqtt/emqttc.git) to be available in a sibling folder. 
+Build requires [emqtcc](git@github.com:emqtt/emqttc.git) to be available in a sibling folder.
 
 [source,bash]
 ----
@@ -44,6 +44,7 @@ export EVT_THNG_KEY=N8KAYvBiYXhDL...a8OvPCDnEhAizu7z7
 alias Evrythng.ThngPush.Client, as: Client
 key = System.get_env("EVT_THNG_KEY")
 {:ok, pid} = Client.start_link(key)
+Client.subscribe(pid, "/thngs/U3cy9ayKBXswtpwawYceAk8a/properties")
 GenServer.stop(pid)
 ----
 

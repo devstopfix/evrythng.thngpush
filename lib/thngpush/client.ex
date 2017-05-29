@@ -13,6 +13,10 @@ defmodule Evrythng.ThngPush.Client do
     GenServer.start_link(__MODULE__, api_key)
   end  
 
+  def subscribe(pid, topic) do
+    GenServer.cast(pid, {:subscribe, topic})
+  end
+
   def init(api_key) do
     {:ok, mqttc_pid} = :emqttc.start_link([
       {:host, 'mqtt.evrythng.com'}, 
@@ -28,14 +32,23 @@ defmodule Evrythng.ThngPush.Client do
     :emqttc.disconnect(mqttc_pid)
   end
 
-  def handle_info({:publish, Topic, Payload}, state) do
-      :io.format("Message Received from ~s: ~p~n", [Topic, Payload]) |> IO.puts
+  def handle_info({:publish, topic, payload}, state) do
+      :io.format("Message Received from ~s: ~p~n", [topic, payload]) |> IO.puts
     {:noreply, state}
   end
 
   def handle_info({:mqttc, pid, :connected}, state) do
     IO.puts("Connected " <> inspect(pid));
     {:noreply, state}
+  end
+
+# no function clause matching in Evrythng.ThngPush.Client.handle_info/2
+#     (thngpush) lib/thngpush/client.ex:35: Evrythng.ThngPush.Client.handle_info({:mqttc, #PID<0.210.0>, :disconnected}, #PID<0.210.0>)
+  
+
+  def handle_cast({:subscribe, topic}, mqttc_pid) do
+    :emqttc.subscribe(mqttc_pid, topic) |> inspect |> IO.puts
+    {:noreply, mqttc_pid}    
   end
 
   @doc """
